@@ -1,0 +1,18 @@
+h1 {
+    color: aqua;
+    background-color: lightpink;
+    font-size: large;
+    font-family:'Courier New', Courier, monospace
+}
+
+a {
+    color: yellow;
+    background-color: blue;
+    font-family:'Courier New', Courier, monospace
+}
+
+img#chicken,
+img#lasagna {
+    height: 100 px;
+    width: auto
+}
