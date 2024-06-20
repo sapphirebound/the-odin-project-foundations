@@ -1,6 +1,3 @@
-let humanScore = 0;
-let computerScore = 0;
-
 function getComputerChoice() {
     let choice = Math.random() * 10;
     if (choice <= 3) {
@@ -18,30 +15,38 @@ function getHumanChoice() {
     return choice;
 }
 
-function playRound(humanChoice, computerChoice) {
-    let humanWin = `You win! ${humanChoice} beats ${computerChoice}`;
-    let computerWin = `You lose! ${computerChoice} beats ${humanChoice}`;
-    if (humanChoice == computerChoice) {
-        return "It's a draw";
-    } else if (humanChoice == "rock" && computerChoice == "scissors") {
-        humanScore += 1;
-        return humanWin;
-    } else if (humanChoice == "rock" && computerChoice == "paper") {
-        computerScore += 1;
-        return computerWin;
-    } else if (humanChoice == "scissor" && computerChoice == "rock") {
-        computerScore += 1;
-        return computerWin;
-    } else if (humanChoice == "scissor" && computerChoice == "paper") {
-        humanScore += 1;
-        return humanWin;
-    } else if (humanChoice == "paper" && computerChoice == "scissor") {
-        computerScore += 1;
-        return computerWin;
-    } else if (humanChoice == "paper" && computerChoice == "rock") {
-        humanScore += 1;
-        return humanWin;
+function playGame() {
+    let humanScore = 0;
+    let computerScore = 0;
+    function playRound(humanChoice, computerChoice) {
+        let humanWin = `You win! ${humanChoice} beats ${computerChoice}`;
+        let computerWin = `You lose! ${computerChoice} beats ${humanChoice}`;
+        if (humanChoice == computerChoice) {
+            console.log("It's a draw");
+        } else if (humanChoice == "rock" && computerChoice == "scissors") {
+            humanScore += 1;
+            console.log(humanWin);
+        } else if (humanChoice == "rock" && computerChoice == "paper") {
+            computerScore += 1;
+            console.log(computerWin);
+        } else if (humanChoice == "scissors" && computerChoice == "rock") {
+            computerScore += 1;
+            console.log(computerWin);
+        } else if (humanChoice == "scissors" && computerChoice == "paper") {
+            humanScore += 1;
+            console.log(humanWin);
+        } else if (humanChoice == "paper" && computerChoice == "scissors") {
+            computerScore += 1;
+            console.log(computerWin);
+        } else if (humanChoice == "paper" && computerChoice == "rock") {
+            humanScore += 1;
+            console.log(humanWin);
+        }
+    }
+    while (humanScore < 5 || computerScore < 5) {
+        playRound(getHumanChoice(), getComputerChoice());
+        console.log(`com: ${computerScore} hum: ${humanScore}`);
     }
 }
 
-console.log(playRound(getHumanChoice(), getComputerChoice()));
+playGame();
