@@ -1,4 +1,9 @@
 const menu = document.querySelector(".menu");
+const scoreBoard = document.querySelector(".scoreboard");
+const winner = document.querySelector("#winner");
+const humanScoreCard = document.querySelector("#human-score");
+const computerScoreCard = document.querySelector('#computer-score');
+
 let humanChoice = '';
 let humanScore = 0;
 let computerScore = 0;
@@ -6,27 +11,32 @@ let computerScore = 0;
 function playRound(humanChoice, computerChoice) {
     let humanWin = `You win! ${humanChoice} beats ${computerChoice}`;
     let computerWin = `You lose! ${computerChoice} beats ${humanChoice}`;
+    let draw = "It's a draw";
+    let result = '';
     if (humanChoice == computerChoice) {
-        console.log("It's a draw");
+        result = draw;
     } else if (humanChoice == "rock" && computerChoice == "scissors") {
         humanScore += 1;
-        console.log(humanWin);
+        result = humanWin;
     } else if (humanChoice == "rock" && computerChoice == "paper") {
         computerScore += 1;
-        console.log(computerWin);
+        result = computerWin;
     } else if (humanChoice == "scissors" && computerChoice == "rock") {
         computerScore += 1;
-        console.log(computerWin);
+        result = computerWin;
     } else if (humanChoice == "scissors" && computerChoice == "paper") {
         humanScore += 1;
-        console.log(humanWin);
+        result = computerWin;
     } else if (humanChoice == "paper" && computerChoice == "scissors") {
         computerScore += 1;
-        console.log(computerWin);
+        result = computerWin;
     } else if (humanChoice == "paper" && computerChoice == "rock") {
         humanScore += 1;
-        console.log(humanWin);
+        result = humanWin;
     }
+    winner.textContent = result;
+    humanScoreCard.textContent = `Human Score: ${humanScore}`;
+    computerScoreCard.textContent = `Computer Score: ${computerScore}`;
 }
 
 function getComputerChoice() {
