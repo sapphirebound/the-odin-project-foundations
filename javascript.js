@@ -69,7 +69,14 @@ menu.addEventListener("click", (event) => {
             playRound('scissors', getComputerChoice());
             break;
     }
+
+    if (humanScore == 5) {
+        alert("Human Wins!");
+    } else if (computerScore == 5) {
+        alert("Computer Wins!");
+    }
 });
+
 
 
 
