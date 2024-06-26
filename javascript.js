@@ -1,18 +1,21 @@
+// Initialise DOM constants for scripting
 const menu = document.querySelector(".menu");
 const scoreBoard = document.querySelector(".scoreboard");
 const winner = document.querySelector("#winner");
 const humanScoreCard = document.querySelector("#human-score");
 const computerScoreCard = document.querySelector('#computer-score');
 
+// Initialise variables to feed to below functions
 let humanChoice = '';
 let humanScore = 0;
 let computerScore = 0;
 
+// Play round function to get winner and track score
 function playRound(humanChoice, computerChoice) {
     let humanWin = `You win! ${humanChoice} beats ${computerChoice}`;
     let computerWin = `You lose! ${computerChoice} beats ${humanChoice}`;
     let draw = "It's a draw";
-    let result = '';
+    let result = ''; // This variable gets the string result
     if (humanChoice == computerChoice) {
         result = draw;
     } else if (humanChoice == "rock" && computerChoice == "scissors") {
@@ -39,6 +42,7 @@ function playRound(humanChoice, computerChoice) {
     computerScoreCard.textContent = `Computer Score: ${computerScore}`;
 }
 
+// Randomised computer choice for the game
 function getComputerChoice() {
     let choice = Math.random() * 10;
     if (choice <= 3) {
@@ -50,6 +54,7 @@ function getComputerChoice() {
     }
 }
 
+// Event listener on menu
 menu.addEventListener("click", (event) => {
     let target = event.target;
 
@@ -70,6 +75,7 @@ menu.addEventListener("click", (event) => {
             break;
     }
 
+    // Winner announcement
     if (humanScore == 5) {
         alert("Human Wins!");
     } else if (computerScore == 5) {
