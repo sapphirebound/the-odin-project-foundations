@@ -1,0 +1,15 @@
+.body {}
+
+.content {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.box {
+    position: relative;
+    background-color: red;
+    width: 6%;
+    margin: 0.125%;
+    aspect-ratio: 1/1;
+}
