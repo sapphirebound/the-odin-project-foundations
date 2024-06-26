@@ -76,21 +76,3 @@ menu.addEventListener("click", (event) => {
         alert("Computer Wins!");
     }
 });
-
-
-
-
-
-menu.onclick;
-
-// function playGame() {
-//     let humanScore = 0;
-//     let computerScore = 0;
-//    
-//     while (humanScore < 5 || computerScore < 5) {
-//         playRound(getHumanChoice(), getComputerChoice());
-//         console.log(`com: ${computerScore} hum: ${humanScore}`);
-//     }
-// }
-
-// playGame();
