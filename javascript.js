@@ -4,29 +4,56 @@ const content = document.querySelector(".content");
 const header = document.createElement("div");
 header.className = "header";
 
-//
+//create input field
+const inputBox = document.createElement("input");
+const inputButton = document.createElement("button");
+inputButton.textContent = 'submit';
+
+header.appendChild(inputBox);
+header.appendChild(inputButton);
+
+//Create grid div for etch-a-sketch
 const grid = document.createElement("div");
 grid.className = "grid";
 
-const horizontalAxis = 16;
-const verticalAxis = 16;
-let count = 0;
+let gridSize = 16;
+
 
 content.appendChild(header);
 content.appendChild(grid);
 
-for (i of Array(horizontalAxis * verticalAxis)) {
-    let box = document.createElement("div");
-    box.className = "box";
-    box.id = count;
-    grid.appendChild(box);
-    count += 1;
+let count = 0;
+
+
+function drawGrid(gridSize) {
+    grid.innerHTML = '';
+    let boxWidth = (100 / gridSize) + '%';
+    for (i of Array(gridSize ** 2)) {
+        console.log(gridSize);
+        let box = document.createElement("div");
+        box.className = "box";
+        box.id = count;
+        box.style.width = boxWidth;
+        grid.appendChild(box);
+        count += 1;
+    }
 }
+
+drawGrid(16);
 
 content.addEventListener("mouseover", (event) => {
     let target = event.target;
     if (target.className === "box") {
         target.style.backgroundColor = "red";
     }
+}
+);
+
+// Get input for grid creator
+inputButton.addEventListener("click", () => {
+    let input = Number(inputBox.value);
+    gridSize = input;
+    inputBox.value = 16;
+    drawGrid(gridSize);
 }
 );
