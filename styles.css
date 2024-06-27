@@ -19,10 +19,14 @@
     padding: 5% 0;
 }
 
-.input {
-    border-radius: 5;
-    border-style: solid;
-    border-color: black;
+button {
+    border: none;
+    padding: 10%;
+    font-family: sans-serif;
+    background-color: chocolate;
+    font-weight: bolder;
+    color: white;
+    border-radius: 5px;
 }
 
 .grid {
