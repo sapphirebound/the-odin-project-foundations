@@ -6,6 +6,9 @@ header.className = "header";
 
 //create input field
 const inputBox = document.createElement("input");
+inputBox.type = "number";
+inputBox.max = 100;
+inputBox.min = 0;
 const inputButton = document.createElement("button");
 inputButton.textContent = 'submit';
 
@@ -52,8 +55,10 @@ content.addEventListener("mouseover", (event) => {
 // Get input for grid creator
 inputButton.addEventListener("click", () => {
     let input = Number(inputBox.value);
-    gridSize = input;
-    inputBox.value = 16;
-    drawGrid(gridSize);
+    if (input <= 100) {
+        gridSize = input;
+        inputBox.value = 16;
+        drawGrid(gridSize);
+    }
 }
 );
