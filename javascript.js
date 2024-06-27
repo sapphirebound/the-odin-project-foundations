@@ -77,7 +77,6 @@ inputButton.addEventListener("click", () => {
     if (input <= 100) {
         gridSize = input;
     } else gridSize = 100;
-    inputBox.value = 16;
     drawGrid(gridSize);
 }
 );
