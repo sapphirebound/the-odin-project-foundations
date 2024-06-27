@@ -11,3 +11,11 @@ for (i of Array(horizontalAxis * verticalAxis)) {
     content.appendChild(box);
     count += 1;
 }
+
+const box = document.querySelector(".box");
+
+content.addEventListener("mouseover", (event) => {
+    let target = event.target;
+    target.style.backgroundColor = "red";
+}
+);
