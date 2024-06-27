@@ -1,10 +1,28 @@
-.body {}
+.body {
+    padding: 10%;
+}
 
 .content {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header {
+    display: flex;
+    flex-direction: row;
+    padding: 5% 0;
+}
+
+.grid {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     align-items: center;
+    width: 100%;
+    padding: 10px;
 }
 
 .box {
