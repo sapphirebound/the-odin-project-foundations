@@ -31,13 +31,12 @@
     flex-wrap: wrap;
     align-items: center;
     width: 100%;
-    padding: 10px;
+    border-color: black;
+    border-style: solid
 }
 
 .box {
     position: relative;
     background-color: white;
-    border-color: black;
-    border-style: solid;
     aspect-ratio: 1/1;
 }
