@@ -1,7 +1,8 @@
 const palindromes = function (word) {
-    word = word.toLowerCase(); //make everything lowercase
-    word = word.replaceAll(/\W/gi, ""); //remove non-letter
-    word = word.trim(); //trim white space
+    word = word
+        .toLowerCase() //make everything lowercase
+        .replaceAll(/\W/gi, "") //remove non-letter
+        .trim(); //trim white space
     reversedWord = ""; // set variable for reversed word
 
     //iterating over each letter in word in reverse
