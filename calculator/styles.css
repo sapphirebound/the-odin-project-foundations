@@ -1,0 +1,18 @@
+.body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.number-pad {
+    background-color: gray;
+    display: flex;
+    flex-direction: row;
+    gap: 10px
+}
+
+.key {
+    background-color: white;
+    padding: 10px;
+    margin: 5px;
+}
