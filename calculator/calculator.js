@@ -11,6 +11,15 @@ let secondNumber = 0;
 let display = 0;
 console.log(firstNumber, operator, secondNumber);
 
+//function to reset variables
+
+const reset = () => {
+    firstNumber = 0;
+    secondNumber = 0;
+    operator = '';
+    display = 0;
+};
+
 //function for math operation
 const operate = function (firstNumber, op, secondNumber) {
     switch (op) {
@@ -27,7 +36,7 @@ const operate = function (firstNumber, op, secondNumber) {
             return divide(firstNumber, secondNumber);
             break;
     };
-    operator = '';
+    reset();
 };
 
 //numpad component
@@ -67,8 +76,8 @@ displayScreen.style.backgroundColor = '#D9EEE1';
 displayScreen.style.display = 'flex';
 displayScreen.textContent = display;
 
-document.querySelector("body").appendChild(displayScreen);
-document.querySelector("body").appendChild(numberPad);
+document.querySelector(".main").appendChild(displayScreen);
+document.querySelector(".main").appendChild(numberPad);
 
 //calculator function
 const buttons = document.querySelectorAll("btn");
@@ -90,12 +99,6 @@ const calculate = (input) => {
     };
 };
 
-const reset = () => {
-    firstNumber = 0;
-    secondNumber = 0;
-    operator = '';
-    display = 0;
-};
 
 //add click listener
 buttons.forEach((button) =>
