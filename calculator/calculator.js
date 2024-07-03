@@ -61,7 +61,7 @@ numberPad.appendChild(numberKey);
 
 
 //result screen
-const displayScreen = document.createElement("div");
+const displayScreen = document.createElement("p");
 displayScreen.className = 'display-screen';
 displayScreen.style.backgroundColor = '#D9EEE1';
 displayScreen.style.display = 'flex';
@@ -86,9 +86,16 @@ const calculate = (input) => {
         operator = input;
         display = '';
         console.log(`operator pressed ${operator}`);
+        return operator;
     };
 };
 
+const reset = () => {
+    firstNumber = 0;
+    secondNumber = 0;
+    operator = '';
+    display = 0;
+};
 
 //add click listener
 buttons.forEach((button) =>
@@ -98,11 +105,11 @@ buttons.forEach((button) =>
                 displayScreen.textContent = calculate(button.textContent);
                 break;
             case 'numpad equals':
-                console.log(`equals`);
                 displayScreen.textContent = operate(firstNumber, operator, secondNumber);
-                console.log(operate(firstNumber, operator, secondNumber));
+                reset();
                 break;
             default:
+                console.log('operator pressed');
                 displayScreen.textContent = calculate(button.textContent);
                 break;
         }
