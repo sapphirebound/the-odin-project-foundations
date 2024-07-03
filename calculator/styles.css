@@ -5,23 +5,75 @@ body {
     justify-content: center;
 }
 
+button {
+    border-color: aliceblue;
+    border-style: solid;
+}
+
 .main {
-    height: 50%;
-    margin: 10%
+    min-width: 90%;
+    min-height: 50%;
+}
+
+.display-screen {
+    margin: 0;
+    justify-content: end;
+    padding: 0 10px;
 }
 
 .numpad {
+    padding: 5px;
     background-color: gray;
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap;
-    gap: 10px
+    flex-wrap: nowrap;
+    text-align: center;
 }
 
-.numbers,
-.operator,
-.equals {
-    background-color: white;
-    padding: 10px;
-    margin: 5px;
+.numpad-left,
+.numpad-right {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.numpad-left {
+    flex-grow: 1;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.numbers {
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    width: 33.33%;
+}
+
+.numpad-left.bottom {
+    flex-direction: row;
+}
+
+.numpad-left.bottom .numbers {
+    width: 66.33%;
+}
+
+.numpad-left.bottom .period {
+    width: 33.33%
+}
+
+.numpad-left.top {
+    flex-direction: row-reverse;
+}
+
+
+.numpad-right {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 2;
+    width: 25
+}
+
+.operator {
+    width: 100%
 }

@@ -43,6 +43,22 @@ const operate = function (firstNumber, op, secondNumber) {
 const numberPad = document.createElement("div");
 numberPad.className = 'numpad';
 
+//operator section
+const numberPadOperator = document.createElement("div");
+numberPadOperator.className = 'numpad-right';
+
+//left section
+const numberPadLeft = document.createElement("div");
+numberPadLeft.className = 'numpad-left';
+
+//bottom-left section
+const numberPadLeftBottom = document.createElement("div");
+numberPadLeftBottom.className = 'numpad-left bottom';
+
+//top-left section
+const numberPadLeftTop = document.createElement("div");
+numberPadLeftTop.className = 'numpad-left top';
+
 const calculatorButtons = {
     numbers: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
     operators: ['+', '-', '*', '/'],
@@ -50,24 +66,33 @@ const calculatorButtons = {
 };
 
 for (let operator of calculatorButtons.operators) {
-    const numberKey = document.createElement("btn");
-    numberKey.className = `numpad operator`;
+    const numberKey = document.createElement("button");
+    numberKey.className = `numpad-right operator`;
     numberKey.id, numberKey.textContent = operator;
-    numberPad.appendChild(numberKey);
+    numberPadOperator.appendChild(numberKey);
 }
 
-for (let num of calculatorButtons.numbers) {
-    const numberKey = document.createElement("btn");
-    numberKey.className = 'numpad numbers';
-    numberKey.id, numberKey.textContent = num;
-    numberPad.appendChild(numberKey);
-}
-
-const numberKey = document.createElement("btn");
-numberKey.className = 'numpad equals';
+let numberKey = document.createElement("button");
+numberKey.className = 'numpad-right operator equals';
 numberKey.id, numberKey.textContent = calculatorButtons.equals;
-numberPad.appendChild(numberKey);
+numberPadOperator.appendChild(numberKey);
 
+for (let num of calculatorButtons.numbers.reverse()) {
+    const numberKey = document.createElement("button");
+    numberKey.className = 'numbers';
+    numberKey.id, numberKey.textContent = num;
+    (num == 0) ? numberPadLeftBottom.appendChild(numberKey) : numberPadLeftTop.appendChild(numberKey);
+}
+
+numberKey = document.createElement("button");
+numberKey.className = 'numpad-left numbers period';
+numberKey.id, numberKey.textContent = '.';
+numberPadLeftBottom.appendChild(numberKey);
+
+numberPadLeft.appendChild(numberPadLeftTop);
+numberPadLeft.appendChild(numberPadLeftBottom);
+numberPad.appendChild(numberPadLeft);
+numberPad.appendChild(numberPadOperator);
 
 //result screen
 const displayScreen = document.createElement("p");
@@ -80,7 +105,7 @@ document.querySelector(".main").appendChild(displayScreen);
 document.querySelector(".main").appendChild(numberPad);
 
 //calculator function
-const buttons = document.querySelectorAll("btn");
+const buttons = document.querySelectorAll("button");
 
 //function to check if input is number
 
@@ -104,10 +129,10 @@ const calculate = (input) => {
 buttons.forEach((button) =>
     button.addEventListener("click", () => {
         switch (button.className) {
-            case 'numpad numbers':
+            case 'numbers':
                 displayScreen.textContent = calculate(button.textContent);
                 break;
-            case 'numpad equals':
+            case 'numpad-right operator equals':
                 displayScreen.textContent = operate(firstNumber, operator, secondNumber);
                 reset();
                 break;
