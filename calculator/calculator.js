@@ -1,50 +1,64 @@
+//calculator functions
 const add = (a, b) => a + b;
 const subtract = (a, b) => a - b;
 const multiply = (a, b) => a * b;
 const divide = (a, b) => a / b;
 
+//initialise variables
 let firstNumber = 0;
 let operator = '';
 let secondNumber = 0;
 let display = 0;
+console.log(firstNumber, operator, secondNumber);
 
-const operate = function (firstNumber, operator, secondNumber) {
-    switch (operator) {
+//function for math operation
+const operate = function (firstNumber, op, secondNumber) {
+    switch (op) {
         case '+':
             return add(firstNumber, secondNumber);
+            break;
         case '-':
             return subtract(firstNumber, secondNumber);
+            break;
         case '*':
             return multiply(firstNumber, secondNumber);
+            break;
         case '/':
             return divide(firstNumber, secondNumber);
-    }
+            break;
+    };
+    operator = '';
 };
 
-//numbers component
+//numpad component
 const numberPad = document.createElement("div");
-numberPad.className = 'number-pad';
+numberPad.className = 'numpad';
 
-let numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+const calculatorButtons = {
+    numbers: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
+    operators: ['+', '-', '*', '/'],
+    equals: '='
+};
 
-let operators = ['+', '-', '*', '/'];
-
-for (operator in operators) {
+for (let operator of calculatorButtons.operators) {
     const numberKey = document.createElement("btn");
-    const operatorKey = operators[operator];
-    numberKey.className = 'number-pad key';
-    numberKey.id = operatorKey;
-    numberKey.textContent = operatorKey;
+    numberKey.className = `numpad operator`;
+    numberKey.id, numberKey.textContent = operator;
     numberPad.appendChild(numberKey);
 }
 
-for (num in numbers) {
+for (let num of calculatorButtons.numbers) {
     const numberKey = document.createElement("btn");
-    numberKey.className = 'number-pad key';
-    numberKey.id = num;
-    numberKey.textContent = num;
+    numberKey.className = 'numpad numbers';
+    numberKey.id, numberKey.textContent = num;
     numberPad.appendChild(numberKey);
 }
+
+const numberKey = document.createElement("btn");
+numberKey.className = 'numpad equals';
+numberKey.id, numberKey.textContent = calculatorButtons.equals;
+numberPad.appendChild(numberKey);
+
 
 //result screen
 const displayScreen = document.createElement("div");
@@ -54,5 +68,45 @@ displayScreen.style.display = 'flex';
 displayScreen.textContent = display;
 
 document.querySelector("body").appendChild(displayScreen);
-document.querySelector("body").appendChild(numberPad)
+document.querySelector("body").appendChild(numberPad);
 
+//calculator function
+const buttons = document.querySelectorAll("btn");
+
+//function to check if input is number
+
+const calculate = (input) => {
+    if (input in calculatorButtons.numbers) {
+        display = String(display) + String(input);
+        display = display.replace("0", "");
+        display = Number(display);
+        (operator == '') ? firstNumber = display : secondNumber = display;
+        return display;
+    } else {
+        operator = input;
+        display = '';
+        console.log(`operator pressed ${operator}`);
+    };
+};
+
+
+//add click listener
+buttons.forEach((button) =>
+    button.addEventListener("click", () => {
+        switch (button.className) {
+            case 'numpad numbers':
+                displayScreen.textContent = calculate(button.textContent);
+                break;
+            case 'numpad equals':
+                console.log(`equals`);
+                displayScreen.textContent = operate(firstNumber, operator, secondNumber);
+                console.log(operate(firstNumber, operator, secondNumber));
+                break;
+            default:
+                displayScreen.textContent = calculate(button.textContent);
+                break;
+        }
+        console.log(firstNumber, operator, secondNumber);
+    }
+    )
+);
