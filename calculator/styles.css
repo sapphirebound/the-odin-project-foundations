@@ -28,6 +28,7 @@ button {
     flex-direction: row;
     flex-wrap: nowrap;
     text-align: center;
+    height: 20rem;
 }
 
 .numpad-left,
