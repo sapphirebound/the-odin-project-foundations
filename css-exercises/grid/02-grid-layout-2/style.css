@@ -1,4 +1,5 @@
-body, html {
+body,
+html {
   height: 100%;
   margin: 0;
 }
@@ -22,19 +23,23 @@ body, html {
 .header {
   background-color: #FFDE22;
   grid-column: 1 / 3;
+  grid-area: header;
 }
 
 .sidebar {
   background-color: #FF7755;
   grid-row: 2 / 4;
+  grid-area: sidebar;
 }
 
 .nav {
   background-color: #00DDFF;
+  grid-area: navbar;
 }
 
 .article {
   background-color: #bccbde;
+  grid-area: article;
 }
 
 .article p {
@@ -47,4 +52,16 @@ body, html {
 .footer {
   background-color: #393f4d;
   grid-column: 1 / 3;
+  grid-area: footer;
+}
+
+.container {
+  display: grid;
+  grid-template: 1fr 1fr 5fr 1fr / 1fr 3fr;
+  grid-template-areas:
+    'header header'
+    'sidebar navbar'
+    'sidebar article'
+    'footer footer';
+  gap: 15px;
 }
